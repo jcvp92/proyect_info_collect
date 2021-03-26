@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Lista de Contactos
+{% endblock title %}
+
+
+
+{% block content %}
+    <h1>Lista de contactos</h1>
+
+    <hr>
+    <a href="{% url 'crear-contacto' %}" class="btn btn-success">Agregar</a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Cedula</th>
+            <th scope="col">nombre</th>
+            <th scope="col">apellidos</th>
+            <th scope="col">movil</th>
+            <th scope="col">correo</th>
+            <th scope="col">tel</th>
+              <th scope="col">Titulo</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for contacto in object_list %}
+          <tr>
+            <th scope="row">{{ contacto.id_contacto }}</th>
+            <td>{{ contacto.nombre }}</td>
+            <td>{{ contacto.apellidos }}</td>
+            <td>{{ contacto.movil }}
+                <td>{{ contacto.correo }}</td>
+                <td>{{ contacto.telefono }}</td>
+               <td>{{ contacto.Titulo }}</td>
+            <td>
+            <a href="{% url 'editar-contacto' contacto.id_contacto %}" class="btn btn-primary">Editar</a>
+        </td>
+        <td>
+            <a href="{% url 'borrar-contacto' contacto.id_contacto %}" class="btn btn-danger">Borrar</a>
+        </td>
+        <td>
+            <a href="{% url 'detalle-contacto' contacto.id_contacto %}" class="btn btn-info">Detalles</a>
+        </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock content %}
+    
+    

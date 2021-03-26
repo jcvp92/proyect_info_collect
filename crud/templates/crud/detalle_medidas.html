@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Detalle de {{ object }}
+{% endblock title %}
+
+{% block content %}
+    <h1>Detalles de: {{ object }}</h1>
+
+    <h1>{{ object.id }}</h1>
+    <p>{{ object.logn_vigas_logn }}</p>
+    <p>altura: {{ object.altura_vigas_logn }}</p>
+    <p>vigas: {{ object.long_vigas_trans }}</p>
+
+    <a href="javascript:history.back()" class="btn btn-secondary">Atrás</a>
+{% endblock content %}
+
+
+    

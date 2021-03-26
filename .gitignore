@@ -1,0 +1,6 @@
+venv/
+*.pyc
+__pycache__/
+*.rar
+proyecto_gestion (1).zip
+.idea/

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Lista de Medidas
+{% endblock title %}
+
+
+
+{% block content %}
+    <h1>Lista de medidas</h1>
+
+    <hr>
+    <a href="{% url 'crear-medidas' %}" class="btn btn-success">Agregar</a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">logn_vigas_logn</th>
+            <th scope="col">altura_vigas_logn</th>
+            <th scope="col">ancho_vigas_logn</th>
+            <th scope="col">long_vigas_trans</th>
+            <th scope="col">altura_vigas_trans</th>
+                <th scope="col">ancho_vigas_trans</th>
+              <th scope="col">altura_zapatas_viga_long</th>
+                <th scope="col">long_puntos_apoyo</th>
+                <th scope="col">altura_zapatas</th>
+                <th scope="col">ancho_zapatas</th>
+                   <th scope="col">largo_zapatas</th>
+                   <th scope="col">distancia_zapatas</th>
+                   <th scope="col">altura_obra_civil</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for medidas in object_list %}
+          <tr>
+            <th scope="row">{{ medidas.id }}</th>
+            <td>{{ medidas.logn_vigas_logn }}</td>
+            <td>{{ medidas.altura_vigas_logn }}</td>
+              <td>{{ medidas.ancho_vigas_logn }}</td>
+                <td>{{ medidas.long_vigas_trans }}</td>
+                <td>{{ medidas.altura_vigas_trans }}</td>
+               <td>{{ medidas.ancho_vigas_trans }}</td>
+                <td>{{ medidas.altura_zapatas_viga_long }}</td>
+                <td>{{ medidas.long_puntos_apoyo }}</td>
+                <td>{{ medidas.altura_zapatas }}</td>
+                <td>{{ medidas.ancho_zapatas }}</td>
+                <td>{{ medidas.largo_zapatas }}</td>
+                <td>{{ medidas.distancia_zapatas }}</td>
+                <td>{{ medidas.altura_obra_civil }}</td>
+
+
+            <td>
+            <a href="{% url 'editar-medidas' medidas.id %}" class="btn btn-primary">Editar</a>
+        </td>
+        <td>
+            <a href="{% url 'borrar-medidas' medidas.id %}" class="btn btn-danger">Borrar</a>
+        </td>
+        <td>
+            <a href="{% url 'detalle-medidas' medidas.id %}" class="btn btn-info">Detalles</a>
+        </td>
+          </tr>
+
+          {% endfor  %}
+
+        <div style="align-content: baseline" class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        </tbody>
+      </table>
+
+{% endblock content %}
+
+    

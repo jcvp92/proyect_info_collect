@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Detalle de usuario {{ object }}
+{% endblock title %}
+
+
+
+{% block content %}
+    <h1>Detalles de: {{ object }}</h1>
+
+    <h1>{{ object.Cedula }}</h1>
+    <p>Nombre: {{ object.nombre }}</p>
+    <p>Apellidos: {{ object.apellidos }}</p>
+    <p>Telefono: {{ object.cargo }}</p>
+    <p>Movil: {{ object.tipo_usuario }}</p>
+    <p><img src="{{object.foto.url}}" style="height: 150px" width="100px"></p>
+
+
+
+
+    <a href="javascript:history.back()" class="btn btn-secondary">Atrás</a>
+{% endblock content %}
+
+    

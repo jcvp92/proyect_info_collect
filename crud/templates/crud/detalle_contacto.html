@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Detalle de {{ object }}
+{% endblock title %}
+
+
+
+{% block content %}
+    <h1>Detalles de: {{ object }}</h1>
+
+    <h1>{{ object.id_contacto }}</h1>
+    <p>{{ object.nombre }}</p>
+    <p>Apellidos: {{ object.apellidos }}</p>
+    <p>Movil: {{ object.movil }}</p>
+
+    <a href="javascript:history.back()" class="btn btn-secondary">Atrás</a>
+{% endblock content %}
+
+    

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Lista de Basculas
+{% endblock title %}
+
+
+
+{% block content %}
+    <h1>Lista de basculas</h1>
+
+    <hr>
+    <a href="{% url 'crear-basculas' %}" class="btn btn-success">Agregar</a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Codigo bascula</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Tipos de basculas</th>
+            <th scope="col">Longitud</th>
+            <th scope="col">Marca</th>
+            <th scope="col">id_plano</th>
+                <th scope="col">id_tecnologia</th>
+              <th scope="col">Longitud Basculas</th>
+                <th scope="col">Caracteristicas</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for basculas in object_list %}
+          <tr>
+            <th scope="row">{{ basculas.cod_bascula }}</th>
+            <td>{{ basculas.descripcion }}</td>
+            <td>{{ basculas.tipos_basculas }}</td>
+              <td>{{ basculas.longitud }}</td>
+                <td>{{ basculas.marca }}</td>
+                <td>{{ basculas.id_plano }}</td>
+               <td>{{ basculas.id_tecnologia }}</td>
+                <td>{{ basculas.longitud_basculas }}</td>
+                <td>{{ basculas.caracteristicas_basculas }}</td>
+
+            <td>
+            <a href="{% url 'editar-basculas' basculas.cod_bascula %}" class="btn btn-primary">Editar</a>
+        </td>
+        <td>
+            <a href="{% url 'borrar-basculas' basculas.cod_bascula %}" class="btn btn-danger">Borrar</a>
+        </td>
+        <td>
+            <a href="{% url 'detalle-basculas' basculas.cod_bascula %}" class="btn btn-info">Detalles</a>
+        </td>
+          </tr>
+
+          {% endfor  %}
+
+        <div style="align-content: baseline" class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        </tbody>
+      </table>
+
+{% endblock content %}
+

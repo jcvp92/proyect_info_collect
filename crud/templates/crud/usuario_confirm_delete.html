@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Seguro?</h1>
+
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <p>Seguro que desea borrar el usuario "{{ object }}"?</p>
+    <input type="submit" class="btn btn-danger" value="Borrar">
+    <a href="javascript:history.back()" class="btn btn-secondary">Cancelar</a>
+</form>
+    
+{% endblock content %}
+    
+
